@@ -1,23 +1,24 @@
 
-### 3WD Chassis Control System
+
+# 3WD Chassis Control System
 
 This project is an embedded C program designed to control a 3-wheel drive (3WD) chassis using an AVR microcontroller. The system moves the chassis forward and automatically turns it right or left when it detects an obstacle. The program uses sensors to detect obstacles and controls motors, LEDs, and a buzzer to perform necessary actions.
 
-### Features
+## Features
 
 - **Forward Motion:** The chassis moves forward by default.
-- **Obstacle Detection:** When an obstacle is detected by the sensors, the system stops, alerts with a buzzer, and then performs a 90-degree right or left turn.
+- **Obstacle Detection:** When the sensors detect an obstacle, the system stops, alerts with a buzzer, and then performs a 90-degree right or left turn.
 - **LED Indicators:** LEDs indicate the current state of the chassis (e.g., moving forward, turning).
-- **Interrupt Handling:** External interrupts are used to detect obstacles and trigger appropriate responses.
+- **Interrupt Handling:** External interrupts detect obstacles and trigger appropriate responses.
 
-### Hardware Requirements
+## Hardware Requirements
 
-- AVR Microcontroller (e.g., ATmega16/32)
-- 3WD Chassis with motors
-- IR Sensors or Ultrasonic Sensors for obstacle detection
-- Buzzer for audible alerts
-- LEDs for visual indicators
-- Power Supply for the microcontroller and motors
+- **AVR Microcontroller** (e.g., ATmega16/32)
+- **3WD Chassis** with motors
+- **IR Sensors or Ultrasonic Sensors** for obstacle detection
+- **Buzzer** for audible alerts
+- **LEDs** for visual indicators
+- **Power Supply** for the microcontroller and motors
 
 ## Pin Configuration
 
@@ -67,7 +68,3 @@ Feel free to contribute to this project by submitting issues or pull requests. A
 ## License
 
 This project is open-source and available under the MIT License. See the LICENSE file for more details.
-
----
-
-This `README.md` provides an overview of your project, guiding users on how to understand, use, and contribute to the code.
