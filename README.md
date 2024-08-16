@@ -67,4 +67,4 @@ Feel free to contribute to this project by submitting issues or pull requests. A
 
 ## License
 
-This project is open-source and available under the MIT License. See the LICENSE file for more details.
+This project is open-source and available under the MIT License. See the [LICENSE](./LICENSE) file for more details.
