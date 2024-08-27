@@ -1,65 +1,59 @@
 
+# 3WD Robotic Chassis Car using AVR_32 Microcontroller
 
-# 3WD Chassis Control System
+## Project Overview
 
-This project is an embedded C program designed to control a 3-wheel drive (3WD) chassis using an AVR microcontroller. The system moves the chassis forward and automatically turns it right or left when it detects an obstacle. The program uses sensors to detect obstacles and controls motors, LEDs, and a buzzer to perform necessary actions.
+This project involves building and programming a 3-wheel-drive (3WD) robotic chassis car using the AVR_32 microcontroller. The car is designed to move in a straight line until an obstacle is detected, at which point it changes direction to avoid the obstacle. The project utilizes various sensors to detect obstacles and trigger the necessary actions.
 
 ## Features
 
-- **Forward Motion:** The chassis moves forward by default.
-- **Obstacle Detection:** When the sensors detect an obstacle, the system stops, alerts with a buzzer, and then performs a 90-degree right or left turn.
-- **LED Indicators:** LEDs indicate the current state of the chassis (e.g., moving forward, turning).
-- **Interrupt Handling:** External interrupts detect obstacles and trigger appropriate responses.
+- **Obstacle Detection**: The robotic car is equipped with sensors to detect obstacles in its path.
+- **Automatic Direction Change**: Upon detecting an obstacle, the car automatically changes direction to avoid it.
+- **LED Indicators**: LEDs are used to indicate the status of the car, such as moving forward, backward, or turning.
+- **Buzzer Alert**: The buzzer is activated when the car encounters an obstacle.
+- **Interrupt Handling**: The project uses interrupts to handle obstacle detection efficiently.
 
-## Hardware Requirements
+## Components Used
 
-- **AVR Microcontroller** (e.g., ATmega16/32)
-- **3WD Chassis** with motors
-- **IR Sensors or Ultrasonic Sensors** for obstacle detection
-- **Buzzer** for audible alerts
-- **LEDs** for visual indicators
-- **Power Supply** for the microcontroller and motors
+- **AVR_32 Microcontroller**: The brain of the robotic car, responsible for processing sensor inputs and controlling the motors.
+- **3WD Robotic Chassis**: The structure of the robotic car, featuring three wheels driven by motors.
+- **Sensors**: Used for detecting obstacles and triggering interrupts.
+- **LEDs**: Indicate different states of the robotic car.
+- **Buzzer**: Provides audible alerts when an obstacle is detected.
+- **Motors**: Drive the wheels of the car, allowing it to move forward, backward, and turn.
 
-## Pin Configuration
+## Code Explanation
 
-- **PD1**: Motor Control Pin
-- **PD0**: Buzzer Control Pin
-- **PD2**: Sensor 1 (Obstacle Detection)
-- **PC4**: Sensor 3 (Obstacle Detection)
-- **PC0 - PC3**: LED Indicators
+The provided code is written in C and is designed to be loaded onto the AVR_32 microcontroller. Below is a brief explanation of the key parts of the code:
 
-## Code Overview
+- **Initialization**: 
+  - The pins for the LEDs, motors, and sensors are configured.
+  - External interrupts are set up to handle obstacle detection.
 
-### Main Loop
+- **Main Loop**:
+  - The car moves forward as long as no obstacle is detected by `SENSOR3`.
+  - When an obstacle is detected by `SENSOR3`, the car stops, moves backward, and turns to avoid the obstacle.
 
-The main loop of the program continuously checks the state of the obstacle sensors:
-
-- If no obstacle is detected, the chassis moves forward, and LEDs 1 and 2 are turned on.
-- If an obstacle is detected, the chassis stops, turns on LEDs 3 and 4, sounds the buzzer, and then performs a 90-degree turn.
-
-### Interrupt Service Routine (ISR)
-
-- The ISR for `INT0` is triggered when an obstacle is detected by Sensor 1.
-- It stops the chassis, toggles the LEDs, and activates the firing motor.
-
-### Libraries Used
-
-- `<avr/io.h>`: Provides access to I/O registers for the AVR microcontroller.
-- `<util/delay.h>`: Allows for delay functions in milliseconds.
-- `<avr/interrupt.h>`: Manages interrupt handling.
+- **Interrupt Service Routine (ISR)**:
+  - The ISR is triggered when an obstacle is detected by `SENSOR1`.
+  - The car stops, toggles the LEDs, activates the buzzer, and moves the firing motor for a short duration before resuming its forward movement.
 
 ## Usage
 
-1. **Compile the Code:** Use AVR-GCC or another compatible compiler.
-2. **Upload to Microcontroller:** Use an AVR programmer to upload the compiled code to your microcontroller.
-3. **Power Up the System:** Connect the power supply to the microcontroller and motors.
-4. **Observe the Behavior:** The chassis should move forward and turn when obstacles are detected.
+1. **Setup**: Assemble the 3WD robotic chassis and connect the components as per the pin configurations defined in the code.
+2. **Upload Code**: Compile and upload the provided code to the AVR_32 microcontroller.
+3. **Power On**: Power on the robotic car, and it should start moving forward.
+4. **Obstacle Detection**: The car will automatically change direction when an obstacle is detected.
 
-## Customization
+## Future Improvements
 
-- **Adjusting Turn Timing:** Modify the `_delay_ms()` values to adjust the duration of the turn.
-- **Sensor Sensitivity:** You can change the sensor configuration to adjust the sensitivity for obstacle detection.
-- **LED Behavior:** Customize the LED indicators by changing the PORTC assignments.
+- **Sensor Optimization**: Implement more sophisticated sensor algorithms to improve obstacle detection.
+- **Advanced Movements**: Introduce more complex movements such as U-turns or circular paths.
+- **Wireless Control**: Add wireless control to manually guide the car when needed.
+
+## Conclusion
+
+This project demonstrates the use of the AVR_32 microcontroller in building a basic autonomous robotic car. The project can be further enhanced by adding more sensors, optimizing the movement algorithms, and incorporating wireless control.
 
 ## Contributing
 
